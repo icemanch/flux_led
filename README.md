@@ -1,4 +1,4 @@
-### Magic Flux Led 
+# Magic Flux Led 
 
 [![Build Status](https://travis-ci.org/icemanch/flux_led.svg?branch=master)](https://travis-ci.org/icemanch/flux_led)
 
