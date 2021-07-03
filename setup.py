@@ -4,7 +4,7 @@ from setuptools import setup
 setup(
     name = 'magic_flux_led',
     packages = ['magic_flux_led'],
-    version = '0.23',
+    version = '0.24',
     description = 'A Python library to communicate with the flux_led smart bulbs',
     author = 'Daniel Hjelseth Høyer, modified by Chris Haun',
     author_email = 'chris.r.haun@gmail.com',
