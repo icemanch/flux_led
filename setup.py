@@ -6,15 +6,17 @@ setup(
     packages = ['magic_flux_led'],
     version = '0.23',
     description = 'A Python library to communicate with the flux_led smart bulbs',
-    author = 'Daniel Hjelseth Høyer',
-    author_email = 'mail@dahoiv.net',
-    url = 'https://github.com/Danielhiversen/flux_led',
+    author = 'Daniel Hjelseth Høyer, modified by Chris Haun',
+    author_email = 'chris.r.haun@gmail.com',
+    url = 'https://github.com/icemanch/flux_led',
     license = 'LGPLv3+',
     include_package_data = True,
     keywords = [
         'flux_led',
         'smart bulbs',
         'light',
+        'magic_flux_led',
+        'magic home',
         ],
     classifiers = [
         'Development Status :: 3 - Alpha',
@@ -35,7 +37,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'flux_led = flux_led.__main__:main'
+            'magic_flux_led = flux_led.__main__:main'
         ]
     },
 )
