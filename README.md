@@ -166,3 +166,11 @@ Options:
 
 The majority of this code was written by - __[Danielhiversen]__ —Daniel Hjelseth Høyer
 
+<!-- People Links -->
+[Danielhiversen]: https://github.com/Danielhiversen "View @Danielhiversen's GitHub profile"
+
+<!-- repo links -->
+
+[ZIP Archive]: https://github.com/icemanch/flux_led/archive/master.zip "Download a ZIP file of this project (without Git contents)"
+
+
