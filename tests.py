@@ -2,12 +2,12 @@ import unittest
 import unittest.mock as mock
 from unittest.mock import Mock, MagicMock, patch
 
-import flux_led   
+import magic_flux_led   
 
 
 class TestLight(unittest.TestCase):
-    @patch('flux_led.WifiLedBulb._send_msg')
-    @patch('flux_led.WifiLedBulb._read_msg')
+    @patch('magic_flux_led.WifiLedBulb._send_msg')
+    @patch('magic_flux_led.WifiLedBulb._read_msg')
     def test_connect(self, mock_read, mock_send):
         """Test setup with minimum configuration."""
         calls = 0
@@ -22,7 +22,7 @@ class TestLight(unittest.TestCase):
                 return bytearray(b'\x81E#a!\x10g\xffh\x00\x04\x00\xf0<')
 
         mock_read.side_effect = read_data
-        light = flux_led.WifiLedBulb("192.168.1.166")
+        light = magic_flux_led.WifiLedBulb("192.168.1.166")
         self.assertEqual(mock_read.call_count, 2)
         self.assertEqual(mock_send.call_count, 2)
         self.assertEqual(
@@ -39,8 +39,8 @@ class TestLight(unittest.TestCase):
         self.assertEqual(light.getRgb(), (103, 255, 104))
         self.assertEqual(light.rgbwcapable, False)
 
-    @patch('flux_led.WifiLedBulb._send_msg')
-    @patch('flux_led.WifiLedBulb._read_msg')
+    @patch('magic_flux_led.WifiLedBulb._send_msg')
+    @patch('magic_flux_led.WifiLedBulb._read_msg')
 
 
     def test_rgb(self, mock_read, mock_send):
@@ -59,7 +59,7 @@ class TestLight(unittest.TestCase):
                 return bytearray(b'\x81E#a!\x10\x01\x19P\x00\x04\x00\xf0\xd8')
 
         mock_read.side_effect = read_data
-        light = flux_led.WifiLedBulb("192.168.1.164")
+        light = magic_flux_led.WifiLedBulb("192.168.1.164")
         self.assertEqual(mock_read.call_count, 2)
         self.assertEqual(mock_send.call_count, 2) 
         self.assertEqual(
@@ -91,8 +91,8 @@ class TestLight(unittest.TestCase):
         self.assertEqual(light.brightness, 80)
         self.assertEqual(light.getRgb(), (1, 25, 80))
 
-    @patch('flux_led.WifiLedBulb._send_msg')
-    @patch('flux_led.WifiLedBulb._read_msg')
+    @patch('magic_flux_led.WifiLedBulb._send_msg')
+    @patch('magic_flux_led.WifiLedBulb._read_msg')
     def test_off_on(self, mock_read, mock_send):
         calls = 0
         def read_data(expected):
@@ -109,7 +109,7 @@ class TestLight(unittest.TestCase):
                 return bytearray(b'\x81E$a!\x10\x00\x00\x00\xa6\x04\x00\x0f4')
 
         mock_read.side_effect = read_data
-        light = flux_led.WifiLedBulb("192.168.1.164")
+        light = magic_flux_led.WifiLedBulb("192.168.1.164")
         self.assertEqual(light.__str__(), "ON  [Warm White: 65% raw state: 129,69,35,97,33,16,0,0,0,166,4,0,15,51,]")
         self.assertEqual(light.protocol, None)
         self.assertEqual(light.is_on, True)
@@ -150,8 +150,8 @@ class TestLight(unittest.TestCase):
         self.assertEqual(light.getRgb(), (255, 255, 255))
         self.assertEqual(light.rgbwcapable, False)
 
-    @patch('flux_led.WifiLedBulb._send_msg')
-    @patch('flux_led.WifiLedBulb._read_msg')
+    @patch('magic_flux_led.WifiLedBulb._send_msg')
+    @patch('magic_flux_led.WifiLedBulb._read_msg')
     def test_ww(self, mock_read, mock_send):
         calls = 0
         def read_data(expected):
@@ -168,7 +168,7 @@ class TestLight(unittest.TestCase):
                 return bytearray(b'\x81E#a!\x10\x00\x00\x00\x19\x04\x00\x0f\xa6')
 
         mock_read.side_effect = read_data
-        light = flux_led.WifiLedBulb("192.168.1.164")
+        light = magic_flux_led.WifiLedBulb("192.168.1.164")
         self.assertEqual(mock_read.call_count, 2)
         self.assertEqual(mock_send.call_count, 2)
         self.assertEqual(
@@ -211,8 +211,8 @@ class TestLight(unittest.TestCase):
         self.assertEqual(light.rgbwcapable, False)
 
 
-    @patch('flux_led.WifiLedBulb._send_msg')
-    @patch('flux_led.WifiLedBulb._read_msg')
+    @patch('magic_flux_led.WifiLedBulb._send_msg')
+    @patch('magic_flux_led.WifiLedBulb._read_msg')
     def test_rgb_brightness(self, mock_read, mock_send):
         calls = 0
         def read_data(expected):
@@ -229,7 +229,7 @@ class TestLight(unittest.TestCase):
                 return bytearray(b'\x81E#a!\x10\x03M\xf7\x00\x04\x00\xf0\xb5')
 
         mock_read.side_effect = read_data
-        light = flux_led.WifiLedBulb("192.168.1.164")
+        light = magic_flux_led.WifiLedBulb("192.168.1.164")
         self.assertEqual(mock_read.call_count, 2)
         self.assertEqual(mock_send.call_count, 2)
         self.assertEqual(
@@ -289,8 +289,8 @@ class TestLight(unittest.TestCase):
         self.assertEqual(light.brightness, 247)
         self.assertEqual(light.getRgb(), (3, 77, 247))
 
-    @patch('flux_led.WifiLedBulb._send_msg')
-    @patch('flux_led.WifiLedBulb._read_msg')
+    @patch('magic_flux_led.WifiLedBulb._send_msg')
+    @patch('magic_flux_led.WifiLedBulb._read_msg')
     def test_rgbwwcw(self, mock_read, mock_send):
         calls = 0
         def read_data(expected):
@@ -307,7 +307,7 @@ class TestLight(unittest.TestCase):
                 return bytearray(b'\x81\x25\x23\x61\x21\x10\xb6\x00\x98\x19\x04\x25\x0f\xa6')
 
         mock_read.side_effect = read_data
-        light = flux_led.WifiLedBulb("192.168.1.164")
+        light = magic_flux_led.WifiLedBulb("192.168.1.164")
         self.assertEqual(mock_read.call_count, 2)
         self.assertEqual(mock_send.call_count, 2)
         self.assertEqual(
@@ -350,8 +350,8 @@ class TestLight(unittest.TestCase):
         self.assertEqual(light.rgbwcapable, True)
         self.assertEqual(light.__str__(), "ON  [Color: (182, 0, 152) White: 25 raw state: 129,37,35,97,33,16,182,0,152,25,4,37,15,166,]")
 
-    @patch('flux_led.WifiLedBulb._send_msg')
-    @patch('flux_led.WifiLedBulb._read_msg')
+    @patch('magic_flux_led.WifiLedBulb._send_msg')
+    @patch('magic_flux_led.WifiLedBulb._read_msg')
     def test_original_ledenet(self, mock_read, mock_send):
         calls = 0
         def read_data(expected):
@@ -378,7 +378,7 @@ class TestLight(unittest.TestCase):
 
 
         mock_read.side_effect = read_data
-        light = flux_led.WifiLedBulb("192.168.1.164")
+        light = magic_flux_led.WifiLedBulb("192.168.1.164")
         self.assertEqual(mock_read.call_count, 3)
         self.assertEqual(mock_send.call_count, 3) 
         self.assertEqual(
