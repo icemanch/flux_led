@@ -1,4 +1,27 @@
-### led_flux.py  [![Build Status](https://travis-ci.org/Danielhiversen/flux_led.svg?branch=master)](https://travis-ci.org/Danielhiversen/flux_led)
+### Magic Flux Led 
+
+[![Build Status](https://travis-ci.org/icemanch/flux_led.svg?branch=master)](https://travis-ci.org/icemanch/flux_led)
+
+- `Repository:` https://github.com/icemanch/flux_led
+
+[<kbd>Download as a ZIP Archive</kbd>][ZIP Archive]
+
+-----
+
+**Table of Contents**
+
+
+<!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3,4" -->
+
+- [Welcome](#welcome)
+- [Installation](#installation)
+- [Examples](#examples)
+- [Credits](#credits)
+
+<!-- /MarkdownTOC -->
+
+-----
+# Welcome
 
 This is a utility for controlling stand-alone Flux WiFi LED light bulbs.
 The protocol was reverse-engineered by studying packet captures between a 
@@ -17,7 +40,10 @@ in PyQt, Kivy, or some other framework.
 * Turning on/off bulb
 * Get state information
 * Setting "warm white" mode
-* Setting single color mode
+* Setting RGB
+* Setting RGBW
+* Setting RGBWW
+* Setting "CCT"  (White Temp)
 * Setting preset pattern mode
 * Setting custom pattern mode
 * Reading timers
@@ -34,63 +60,64 @@ and looks like it might be a bit of work.
 * Specify colors with names or web hex values.  Requires that python "webcolors" 
 package is installed.  (Easily done via pip, easy_install, or apt-get, etc.) Use --listcolors to show valid color names.
 
-##### Installation:
-* Flux_led package available at https://pypi.python.org/pypi/flux-led/
+-----
+# Installation
+* Flux_led package available at https://pypi.python.org/pypi/magic-flux-led/
 ```
-pip install flux_led
+pip install magic_flux_led
 
-easy_install flux_led
+easy_install magic_flux_led
 ```
-
-##### Examples:
+-----
+# Examples
 ```
 Scan network:
-	python -m flux_led -s
+	python -m magic_flux_led -s
 
 Scan network and show info about all:
-	python -m flux_led -sSti
+	python -m magic_flux_led -sSti
 
 Turn on:
-	python -m flux_led 192.168.1.100 --on
-	python -m flux_led 192.168.1.100 -192.168.1.101 -1
+	python -m magic_flux_led 192.168.1.100 --on
+	python -m magic_flux_led 192.168.1.100 -192.168.1.101 -1
 
 Turn on all bulbs on LAN:
-	python -m flux_led -sS --on
+	python -m magic_flux_led -sS --on
 
 Turn off:
-	python -m flux_led 192.168.1.100 --off
-	python -m flux_led 192.168.1.100 --0
-	python -m flux_led -sS --off
+	python -m magic_flux_led 192.168.1.100 --off
+	python -m magic_flux_led 192.168.1.100 --0
+	python -m magic_flux_led -sS --off
 	
 Set warm white, 75%
-	python -m flux_led 192.168.1.100 -w 75 -1
+	python -m magic_flux_led 192.168.1.100 -w 75 -1
 
 Set fixed color red :
-	python -m flux_led 192.168.1.100 -c Red
-	python -m flux_led 192.168.1.100 -c 255,0,0
-	python -m flux_led 192.168.1.100 -c "#FF0000"
+	python -m magic_flux_led 192.168.1.100 -c Red
+	python -m magic_flux_led 192.168.1.100 -c 255,0,0
+	python -m magic_flux_led 192.168.1.100 -c "#FF0000"
 	
 Set preset pattern #35 with 40% speed:	
-	python -m flux_led 192.168.1.100 -p 35 40
+	python -m magic_flux_led 192.168.1.100 -p 35 40
 	
 Set custom pattern 25% speed, red/green/blue, gradual change:
-	python -m flux_led 192.168.1.100 -C gradual 25 "red green (0,0,255)"
+	python -m magic_flux_led 192.168.1.100 -C gradual 25 "red green (0,0,255)"
 
 Sync all bulb's clocks with this computer's:
-	python -m flux_led -sS --setclock
+	python -m magic_flux_led -sS --setclock
 		
 Set timer #1 to turn on red at 5:30pm on weekdays:
-	python -m flux_led 192.168.1.100 -T 1 color "time:1730;repeat:12345;color:red"
+	python -m magic_flux_led 192.168.1.100 -T 1 color "time:1730;repeat:12345;color:red"
 	
 Deactivate timer #4:
-	python -m flux_led 192.168.1.100 -T 4 inactive ""
+	python -m magic_flux_led 192.168.1.100 -T 4 inactive ""
 
 Use --timerhelp for more details on setting timers
 ```
 	
 ##### Show help:
 ```	
-$ python -m flux_led -h
+$ python -m magic_flux_led -h
 Usage: usage: __main__.py [-sS10cwpCiltThe] [addr1 [addr2 [addr3] ...].
 
 A utility to control Flux WiFi LED Bulbs.
@@ -133,6 +160,9 @@ Options:
                         or strobe. SPEED is percent. COLORLIST is a space-
                         separated list of color names, web hex values, or
                         comma-separated RGB triples
-
-
 ```
+-----
+# Credits
+
+The majority of this code was written by - __[Danielhiversen]__ —Daniel Hjelseth Høyer
+
